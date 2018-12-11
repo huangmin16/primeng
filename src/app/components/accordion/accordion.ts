@@ -3,7 +3,6 @@ import { NgModule, Component, ElementRef, AfterContentInit, OnDestroy, Input, Ou
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { SharedModule, Header } from '../common/shared';
-import { BlockableUI } from '../common/blockableui';
 import { Subscription } from 'rxjs';
 
 let idx: number = 0;
@@ -126,7 +125,7 @@ export class AccordionTab implements OnDestroy {
         </div>
     `
 })
-export class Accordion implements BlockableUI, AfterContentInit, OnDestroy {
+export class Accordion implements AfterContentInit, OnDestroy {
     
     @Input() multiple: boolean;
     
@@ -167,10 +166,6 @@ export class Accordion implements BlockableUI, AfterContentInit, OnDestroy {
         this.tabs = this.tabList.toArray();
         this.updateSelectionState();
     }
-      
-    getBlockableElement(): HTMLElement {
-        return this.el.nativeElement.children[0];
-    } 
     
     @Input() get activeIndex(): any {
         return this._activeIndex;
